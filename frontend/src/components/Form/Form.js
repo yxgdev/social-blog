@@ -11,9 +11,21 @@ import {
   Collapse,
   Button,
 } from "@material-ui/core";
+
+import FileBase64 from "react-file-base64";
+
+const initialState = {
+  title: "",
+  content: "",
+  selectedFile: "",
+  author: "",
+  createdAt: "",
+};
 const Form = () => {
   const classes = useStyles();
   const [collapsed, setCollapsed] = useState(false);
+
+  const [state, setState] = useState(initialState);
 
   const handleCollapseButton = () => {
     setCollapsed(!collapsed);
@@ -50,7 +62,22 @@ const Form = () => {
                 <TextField fullWidth label="Title"></TextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField fullWidth label="Title"></TextField>
+                <TextField
+                  fullWidth
+                  multiline
+                  minRows={4}
+                  label="Content"
+                ></TextField>
+
+                <Grid className={classes.fileBase} item xs={12}>
+                  <FileBase64
+                    type="file"
+                    multiple={false}
+                    onDone={({ base64 }) =>
+                      setState({ ...state, image: base64 })
+                    }
+                  ></FileBase64>
+                </Grid>
               </Grid>
             </Grid>
           </Collapse>

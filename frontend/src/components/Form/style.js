@@ -11,10 +11,14 @@ export default makeStyles(() => ({
     padding: "30px",
   },
   textField: {
-    maxWidth: "100px",
+    maxWidth: "30%",
+  },
+  fileBase: {
+    display: "flex",
+    justifyContent: "start",
+    marginTop: "20px",
   },
 }));
 
-//
 //
 //
