@@ -13,6 +13,9 @@ export default makeStyles(() => ({
     height: "50px",
   },
 
+  toolbar: {
+    justifyContent: "center",
+  },
   navbar: {
     margin: "0px 0px",
     padding: "0px 0px",

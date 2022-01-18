@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useStyles from "./style";
 import {
   Paper,
   Container,
@@ -13,6 +12,7 @@ import {
 } from "@material-ui/core";
 
 import FileBase64 from "react-file-base64";
+import useStyles from "./styles";
 
 const initialState = {
   title: "",
@@ -33,7 +33,7 @@ const Form = () => {
 
   return (
     <Container className={classes.container} align="center">
-      <Paper className={classes.paper} elevation={2}>
+      <Paper className={classes.paper} elevation={10}>
         <form action="" className={classes.form}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item xs={6}>

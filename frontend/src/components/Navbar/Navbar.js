@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="relative" className={classes.navbar}>
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <img className={classes.img} src={bookSvg} alt="" />
         <Typography className={classes.brand} variant="h3">
           Social Blog
