@@ -1,9 +1,20 @@
 import { makeStyles } from "@material-ui/core";
-
 export default makeStyles(() => ({
-  brand: {
-    marginLeft: "50px",
-    fontFamily: ["Poppins", "sans-serif"].join(","),
+  container: {
+    width: "50%",
+  },
+  grid: {
+    padding: "10px 0px",
+  },
+  form: {},
+  paper: {
+    padding: "30px",
+  },
+  textField: {
+    maxWidth: "100px",
   },
 }));
+
+//
+//
 //
