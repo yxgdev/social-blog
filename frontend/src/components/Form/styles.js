@@ -11,6 +11,9 @@ export default makeStyles(() => ({
   paper: {
     padding: "30px",
   },
+  typography: {
+    fontFamily: ["Poppins", "sans-serif"].join(","),
+  },
   textField: {
     maxWidth: "30%",
   },

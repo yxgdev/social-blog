@@ -37,8 +37,12 @@ const Form = () => {
         <form action="" className={classes.form}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item xs={6}>
-              <Typography variant="h6" align="left">
-                Make a New Blog
+              <Typography
+                className={classes.typography}
+                variant="h6"
+                align="left"
+              >
+                Make a New Blog Post
               </Typography>
             </Grid>
             <Grid item>
