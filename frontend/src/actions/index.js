@@ -1,5 +1,10 @@
 import * as api from "../api";
-import { CREATE_POST, DELETE_POST, GET_ALL } from "../constants/actionTypes";
+import {
+  CREATE_POST,
+  DELETE_POST,
+  GET_ALL,
+  UPDATE_POST_VIEWS,
+} from "../constants/actionTypes";
 
 export const getBlogPosts = () => async (dispatch) => {
   try {
@@ -20,4 +25,9 @@ export const deletePost = (id) => async (dispatch) => {
   // delete post
   await api.deletePost(id);
   dispatch({ type: DELETE_POST, payload: id });
+};
+
+export const updateViewCount = (id) => async (dispatch) => {
+  const updatedPost = await api.updatePostViews(id);
+  dispatch({ type: UPDATE_POST_VIEWS, payload: { updatedPost, id } });
 };

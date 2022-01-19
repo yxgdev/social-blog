@@ -24,3 +24,20 @@ export const deletePost = async (req, res) => {
     console.log(error);
   }
 };
+
+export const updatePostViews = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const updatedPost = await blogPost.findByIdAndUpdate(
+      id,
+      {
+        $inc: { views: 1 },
+      },
+      { new: true }
+    );
+    res.status(200).json({ post: updatedPost });
+  } catch (error) {
+    console.log("updatePostviews controller");
+  }
+};

@@ -11,11 +11,11 @@ import {
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../../actions";
+import { deletePost, updateViewCount } from "../../../actions";
 import useStyles from "./styles";
 import Visibility from "@material-ui/icons/Visibility";
 
-const BlogPostSingle = ({ post }) => {
+const BlogPostSingle = ({ post, handleActionArea }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -27,7 +27,10 @@ const BlogPostSingle = ({ post }) => {
   return (
     <Grid item className={classes.gridItem} xs={12} md={6} lg={4}>
       <Card className={classes.card}>
-        <CardActionArea className={classes.actionArea}>
+        <CardActionArea
+          onClick={() => handleActionArea(post._id)}
+          className={classes.actionArea}
+        >
           <CardContent className={classes.cardContent}>
             <CardMedia
               className={classes.media}
