@@ -1,9 +1,12 @@
 import {
+  Box,
   Card,
   CardActionArea,
   CardMedia,
+  CircularProgress,
   Container,
   Grid,
+  LinearProgress,
   Typography,
 } from "@material-ui/core";
 import React, { useEffect } from "react";
@@ -23,16 +26,20 @@ const BlogPosts = () => {
   const blogPosts = useSelector((state) => state.blogPosts);
   return (
     <Container align="center">
-      <Grid
-        className={classes.grid}
-        direction="row"
-        container
-        justifyContent="flex-start"
-      >
-        {blogPosts.map((post) => {
-          return <BlogPostSingle key={post._id} post={post}></BlogPostSingle>;
-        })}
-      </Grid>
+      {blogPosts.length == 0 ? (
+        <CircularProgress className={classes.loading} />
+      ) : (
+        <Grid
+          className={classes.grid}
+          direction="row"
+          container
+          justifyContent="flex-start"
+        >
+          {blogPosts.map((post) => {
+            return <BlogPostSingle key={post._id} post={post}></BlogPostSingle>;
+          })}
+        </Grid>
+      )}
     </Container>
   );
 };

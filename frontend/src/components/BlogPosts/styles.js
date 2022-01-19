@@ -4,6 +4,11 @@ export default makeStyles(() => ({
   grid: {
     padding: "20px",
   },
+
+  loading: {
+    position: "fixed",
+    top: "460px",
+  },
 }));
 //
 //
