@@ -44,6 +44,7 @@ const Form = () => {
       content: state.content,
       selectedFile: state.selectedFile,
       author: "somebody",
+      views: 0,
       createdAt: Date.now(),
     };
 

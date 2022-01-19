@@ -25,6 +25,16 @@ export default makeStyles(() => ({
     right: "20px",
     bottom: "15px",
   },
+  views: {
+    display: "flex",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "15px",
+    left: "20px",
+  },
+  viewsWord: {
+    marginLeft: "5px",
+  },
 }));
 //
 //

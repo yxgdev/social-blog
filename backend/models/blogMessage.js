@@ -5,6 +5,7 @@ const blogPostsSchema = mongoose.Schema({
   content: String,
   selectedFile: String,
   author: String,
+  views: Number,
   createdAt: {
     type: Date,
     required: true,

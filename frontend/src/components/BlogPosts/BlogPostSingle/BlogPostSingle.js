@@ -13,6 +13,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deletePost } from "../../../actions";
 import useStyles from "./styles";
+import Visibility from "@material-ui/icons/Visibility";
 
 const BlogPostSingle = ({ post }) => {
   const classes = useStyles();
@@ -38,6 +39,13 @@ const BlogPostSingle = ({ post }) => {
             <Typography variant="subtitle1"> {post.content}</Typography>
           </CardContent>
         </CardActionArea>
+        <div className={classes.views}>
+          <Visibility />
+          <Typography className={classes.viewsWord} variant="subtitle2">
+            {post.views} Views
+          </Typography>
+        </div>
+
         <Button
           className={classes.button}
           onClick={() => handleButtonClick(post._id)}
