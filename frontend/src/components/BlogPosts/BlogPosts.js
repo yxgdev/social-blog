@@ -6,12 +6,22 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import BlogPostSingle from "./BlogPostSingle/BlogPostSingle";
+import { useDispatch, useSelector } from "react-redux";
 
 import useStyles from "./styles";
+import { getBlogPosts } from "../../actions";
 const BlogPosts = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBlogPosts());
+  }, [dispatch]);
+
+  const blogPosts = useSelector((state) => state.blogPosts);
+  console.log(blogPosts, "ahh");
   return (
     <Container align="center">
       <Grid
@@ -20,12 +30,11 @@ const BlogPosts = () => {
         container
         justifyContent="flex-start"
       >
-        <BlogPostSingle></BlogPostSingle>
-        <BlogPostSingle></BlogPostSingle>
-        <BlogPostSingle></BlogPostSingle>
-        <BlogPostSingle></BlogPostSingle>
-        <BlogPostSingle></BlogPostSingle>
-        <BlogPostSingle></BlogPostSingle>
+        {blogPosts.map((post) => {
+          console.log(post);
+          console.log("hi");
+          return <BlogPostSingle key={post._id} post={post}></BlogPostSingle>;
+        })}
       </Grid>
     </Container>
   );

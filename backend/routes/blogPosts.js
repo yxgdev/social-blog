@@ -4,6 +4,6 @@ import { createBlogPosts, getBlogPosts } from "../controllers/blogPosts.js";
 
 const router = express.Router();
 
-router.get("/", createBlogPosts);
+router.get("/", getBlogPosts);
 router.post("/", createBlogPosts);
 export default router;

@@ -1,16 +1,6 @@
 import { combineReducers } from "redux";
+import blogPosts from "../reducers/blogPosts";
 
-const initialState = {
-  data: null,
-};
-
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
-    default:
-      return state;
-  }
-};
-
-// export default combineReducers({
-
-// })
+export default combineReducers({
+  blogPosts,
+});

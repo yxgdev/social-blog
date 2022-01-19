@@ -10,7 +10,7 @@ import {
 import React from "react";
 import useStyles from "./styles";
 
-const BlogPostSingle = () => {
+const BlogPostSingle = ({ post }) => {
   const classes = useStyles();
 
   return (
@@ -22,9 +22,10 @@ const BlogPostSingle = () => {
               className={classes.media}
               component="img"
               height="150"
-              src="https://source.unsplash.com/random"
+              src={post.selectedFile}
             ></CardMedia>
-            <Typography variant="subtitle1"> acbadoasuh</Typography>
+            <Typography variant="h6"> {post.title}</Typography>
+            <Typography variant="subtitle1"> {post.content}</Typography>
           </CardContent>
         </CardActionArea>
       </Card>

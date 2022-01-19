@@ -22,6 +22,11 @@ export default makeStyles(() => ({
     justifyContent: "start",
     marginTop: "20px",
   },
+  buttonItem: {
+    marginTop: "20px",
+    display: "flex",
+    justifyContent: "start",
+  },
 }));
 
 //

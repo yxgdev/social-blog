@@ -12,7 +12,11 @@ import {
 } from "@material-ui/core";
 
 import FileBase64 from "react-file-base64";
+import { useDispatch } from "react-redux";
+import moment from "moment";
+
 import useStyles from "./styles";
+import { createBlogPost } from "../../actions";
 
 const initialState = {
   title: "",
@@ -26,15 +30,36 @@ const Form = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const [state, setState] = useState(initialState);
+  const dispatch = useDispatch();
 
   const handleCollapseButton = () => {
     setCollapsed(!collapsed);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      title: state.title,
+      content: state.content,
+      selectedFile: state.selectedFile,
+      author: "somebody",
+      createdAt: Date.now(),
+    };
+
+    dispatch(createBlogPost(formData));
+  };
+
+  const handleChange = (e) => {
+    console.log([e.target.name], e.target.value);
+    setState({ ...state, [e.target.name]: e.target.value });
+    return;
+  };
+
   return (
     <Container className={classes.container} align="center">
       <Paper className={classes.paper} elevation={10}>
-        <form action="" className={classes.form}>
+        <form onSubmit={handleSubmit} action="" className={classes.form}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item xs={6}>
               <Typography
@@ -63,10 +88,17 @@ const Form = () => {
               className={classes.grid}
             >
               <Grid className={classes.textField} item xs={12}>
-                <TextField fullWidth label="Title"></TextField>
+                <TextField
+                  name="title"
+                  onChange={handleChange}
+                  fullWidth
+                  label="Title"
+                ></TextField>
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  name="content"
+                  onChange={handleChange}
                   fullWidth
                   multiline
                   minRows={4}
@@ -75,12 +107,18 @@ const Form = () => {
 
                 <Grid className={classes.fileBase} item xs={12}>
                   <FileBase64
+                    name="selectedFile"
                     type="file"
                     multiple={false}
                     onDone={({ base64 }) =>
-                      setState({ ...state, image: base64 })
+                      setState({ ...state, selectedFile: base64 })
                     }
                   ></FileBase64>
+                </Grid>
+                <Grid className={classes.buttonItem} item xs={12}>
+                  <Button type="submit" variant="contained" color="primary">
+                    Submit
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
