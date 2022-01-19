@@ -10,7 +10,8 @@ export const getBlogPosts = () => async (dispatch) => {
   }
 };
 
-export const createBlogPost = (data) => async (dispatch) => {
-  await api.createPost(data);
+export const createBlogPost = (post) => async (dispatch) => {
+  const { data } = await api.createPost(post);
+  console.log(data);
   dispatch({ type: CREATE_POST, payload: data });
 };

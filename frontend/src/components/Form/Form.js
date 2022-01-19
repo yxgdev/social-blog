@@ -51,7 +51,6 @@ const Form = () => {
   };
 
   const handleChange = (e) => {
-    console.log([e.target.name], e.target.value);
     setState({ ...state, [e.target.name]: e.target.value });
     return;
   };
@@ -93,6 +92,7 @@ const Form = () => {
                   onChange={handleChange}
                   fullWidth
                   label="Title"
+                  value={state.title}
                 ></TextField>
               </Grid>
               <Grid item xs={12}>
@@ -103,6 +103,7 @@ const Form = () => {
                   multiline
                   minRows={4}
                   label="Content"
+                  value={state.content}
                 ></TextField>
 
                 <Grid className={classes.fileBase} item xs={12}>

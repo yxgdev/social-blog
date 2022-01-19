@@ -5,13 +5,19 @@ import {
   Typography,
   Grid,
   CardContent,
+  Button,
 } from "@material-ui/core";
 
 import React from "react";
+
+import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 
 const BlogPostSingle = ({ post }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleButtonClick = () => {};
 
   return (
     <Grid item className={classes.gridItem} xs={12} md={6} lg={4}>
@@ -28,6 +34,9 @@ const BlogPostSingle = ({ post }) => {
             <Typography variant="subtitle1"> {post.content}</Typography>
           </CardContent>
         </CardActionArea>
+        <Button variant="contained" color="secondary">
+          DELETE
+        </Button>
       </Card>
     </Grid>
   );

@@ -21,7 +21,6 @@ const BlogPosts = () => {
   }, [dispatch]);
 
   const blogPosts = useSelector((state) => state.blogPosts);
-  console.log(blogPosts, "ahh");
   return (
     <Container align="center">
       <Grid
@@ -31,8 +30,6 @@ const BlogPosts = () => {
         justifyContent="flex-start"
       >
         {blogPosts.map((post) => {
-          console.log(post);
-          console.log("hi");
           return <BlogPostSingle key={post._id} post={post}></BlogPostSingle>;
         })}
       </Grid>

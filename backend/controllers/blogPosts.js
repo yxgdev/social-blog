@@ -7,15 +7,17 @@ export const getBlogPosts = async (req, res) => {
 };
 
 export const createBlogPosts = async (req, res) => {
-  console.log(req.body);
-  const { data } = req.body;
-  console.log(data);
-  // const newBlog = new blogPost({
-  //   title: "great stuffs",
-  //   content: "some content",
-  //   author: "god",
-  //   createdAt: Date.now(),
-  //   selectedFile: "some base 64 stuffs",
-  // });
-  res.status(200).json({ message: "done" });
+  const newPost = req.body;
+  const newBlogPost = new blogPost(newPost);
+
+  const newlyCreatedPost = await newBlogPost.save();
+  res.status(200).json({ post: newlyCreatedPost });
+};
+
+export const deletePost = async (req, res) => {
+  const id = req.body;
+  console.log(id);
+  await blogPost.findByIdAndDelete(id);
+
+  res.status(200).json({ message: "deleted" });
 };
