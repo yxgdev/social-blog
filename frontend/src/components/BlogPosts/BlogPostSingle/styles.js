@@ -4,6 +4,7 @@ export default makeStyles(() => ({
   card: {
     maxWidth: "300px",
     margin: "0px",
+    position: "relative",
   },
   media: {},
   gridItem: {
@@ -16,6 +17,13 @@ export default makeStyles(() => ({
   cardContent: {
     padding: "0px",
     height: "300px",
+  },
+  button: {
+    color: "white",
+    backgroundColor: "brown",
+    position: "absolute",
+    right: "20px",
+    bottom: "15px",
   },
 }));
 //

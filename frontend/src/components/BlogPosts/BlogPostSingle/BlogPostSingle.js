@@ -39,6 +39,7 @@ const BlogPostSingle = ({ post }) => {
           </CardContent>
         </CardActionArea>
         <Button
+          className={classes.button}
           onClick={() => handleButtonClick(post._id)}
           variant="contained"
           color="secondary"
