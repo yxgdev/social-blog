@@ -15,9 +15,12 @@ export const createBlogPosts = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
-  const id = req.body;
-  console.log(id);
-  await blogPost.findByIdAndDelete(id);
+  try {
+    const { id } = req.params;
+    await blogPost.findByIdAndDelete(id);
 
-  res.status(200).json({ message: "deleted" });
+    res.status(200).json({ message: "deleted" });
+  } catch (error) {
+    console.log(error);
+  }
 };
