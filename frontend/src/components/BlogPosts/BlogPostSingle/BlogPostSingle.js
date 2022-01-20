@@ -16,7 +16,6 @@ import Visibility from "@material-ui/icons/Visibility";
 import { Link } from "react-router-dom";
 
 import useStyles from "./styles";
-
 const BlogPostSingle = ({ post, handleActionArea }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
