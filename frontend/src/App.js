@@ -6,10 +6,14 @@ import Navbar from "./components/Navbar/Navbar";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
+import AuthPrompt from "./components/Auth/AuthPrompt/AuthPrompt";
+import AuthForm from "./components/Auth/AuthForm/AuthForm";
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <AuthPrompt />
+      <AuthForm />
 
       <Routes>
         <Route path="/" element={<Home />}></Route>

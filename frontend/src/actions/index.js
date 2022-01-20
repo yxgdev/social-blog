@@ -18,7 +18,6 @@ export const getBlogPosts = () => async (dispatch) => {
 
 export const createBlogPost = (post) => async (dispatch) => {
   const { data } = await api.createPost(post);
-  console.log(data);
   dispatch({ type: CREATE_POST, payload: data });
 };
 
@@ -34,7 +33,6 @@ export const updateViewCount = (id) => async (dispatch) => {
 };
 
 export const getSinglePost = (id) => async (dispatch) => {
-  console.log("here");
   const post = await api.getSinglePost(id);
 
   dispatch({ type: GET_SINGLE_POST, payload: post });

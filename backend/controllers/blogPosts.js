@@ -45,7 +45,6 @@ export const updatePostViews = async (req, res) => {
 export const getSinglePost = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
 
     const post = await blogPost.findById(id);
 
