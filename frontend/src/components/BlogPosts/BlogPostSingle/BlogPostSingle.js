@@ -33,7 +33,7 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
           onClick={() => handleActionArea(post._id)}
           className={classes.actionArea}
         >
-          <Link to={`/something`}>
+          <Link to={`/${post._id}`}>
             <CardContent className={classes.cardContent}>
               <CardMedia
                 className={classes.media}

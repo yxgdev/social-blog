@@ -41,3 +41,16 @@ export const updatePostViews = async (req, res) => {
     console.log("updatePostviews controller");
   }
 };
+
+export const getSinglePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+
+    const post = await blogPost.findById(id);
+
+    res.status(200).json(post);
+  } catch (error) {
+    console.log("getSinglePosts error");
+  }
+};

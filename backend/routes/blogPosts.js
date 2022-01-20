@@ -4,6 +4,7 @@ import {
   createBlogPosts,
   deletePost,
   getBlogPosts,
+  getSinglePost,
   updatePostViews,
 } from "../controllers/blogPosts.js";
 
@@ -13,4 +14,6 @@ router.get("/", getBlogPosts);
 router.post("/", createBlogPosts);
 router.delete("/:id", deletePost);
 router.patch("/:id/views", updatePostViews);
+router.get("/:id", getSinglePost);
+
 export default router;

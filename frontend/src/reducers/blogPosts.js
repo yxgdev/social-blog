@@ -3,6 +3,7 @@ import {
   GET_ALL,
   DELETE_POST,
   UPDATE_POST_VIEWS,
+  GET_SINGLE_POST,
 } from "../constants/actionTypes";
 
 export default (posts = [], action) => {
@@ -22,8 +23,6 @@ export default (posts = [], action) => {
       const updatedPost = action.payload.updatedPost.data.post;
 
       return posts.map((post) => {
-        console.log(updatedPost);
-        console.log(post);
         return post._id === action.payload.id ? updatedPost : post;
       });
 
