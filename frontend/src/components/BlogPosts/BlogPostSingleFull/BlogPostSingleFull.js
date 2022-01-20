@@ -19,7 +19,6 @@ const BlogPostSingleFull = () => {
   }, [dispatch]);
 
   const post = useSelector((state) => {
-    console.log(state, "ah");
     return state.singlePost;
   });
 

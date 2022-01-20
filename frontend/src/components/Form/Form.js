@@ -47,6 +47,15 @@ const Form = () => {
       views: 0,
       createdAt: Date.now(),
     };
+    // reset
+    setState({
+      title: "",
+      content: "",
+      selectedFile: "",
+      author: '"somebody"',
+      views: 0,
+      createdAt: Date.now(),
+    });
 
     dispatch(createBlogPost(formData));
   };
@@ -90,7 +99,7 @@ const Form = () => {
               <Grid className={classes.textField} item xs={12}>
                 <TextField
                   required
-                  inputProps={{ maxlength: 15 }}
+                  inputProps={{ maxLength: 15 }}
                   name="title"
                   onChange={handleChange}
                   fullWidth
@@ -102,7 +111,7 @@ const Form = () => {
                 <TextField
                   label="Content"
                   required
-                  inputProps={{ maxlength: 500 }}
+                  inputProps={{ maxLength: 500 }}
                   name="content"
                   onChange={handleChange}
                   fullWidth

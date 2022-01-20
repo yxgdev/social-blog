@@ -16,12 +16,12 @@ import Visibility from "@material-ui/icons/Visibility";
 import { Link } from "react-router-dom";
 
 import useStyles from "./styles";
+
 const BlogPostSingle = ({ post, handleActionArea }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const handleButtonClick = (id) => {
-    console.log(id);
     dispatch(deletePost(id));
   };
 
@@ -45,7 +45,7 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
                 <Typography
                   paragraph
                   className={classes.content}
-                  variant="body"
+                  variant="body1"
                 >
                   {post.content.length > 180
                     ? post.content.substring(0, 180) + " ..."
