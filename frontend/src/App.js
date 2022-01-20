@@ -12,12 +12,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <AuthPrompt />
-      <AuthForm />
 
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/post/:postId" element={<BlogPostSingleFull />}></Route>
+        <Route path="/auth" element={<AuthForm />}></Route>
       </Routes>
     </BrowserRouter>
   );

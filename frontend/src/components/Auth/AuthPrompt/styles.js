@@ -7,6 +7,11 @@ export default makeStyles(() => ({
   },
   paper: {
     padding: "20px",
+    backgroundColor: "white",
+  },
+  paperT: {
+    padding: "20px",
+    backgroundColor: "transparent",
   },
   grid: {
     alignItems: "center",
