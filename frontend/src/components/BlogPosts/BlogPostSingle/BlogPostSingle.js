@@ -12,8 +12,10 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 import { deletePost, updateViewCount } from "../../../actions";
-import useStyles from "./styles";
 import Visibility from "@material-ui/icons/Visibility";
+import { Link } from "react-router-dom";
+
+import useStyles from "./styles";
 
 const BlogPostSingle = ({ post, handleActionArea }) => {
   const classes = useStyles();
@@ -31,16 +33,18 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
           onClick={() => handleActionArea(post._id)}
           className={classes.actionArea}
         >
-          <CardContent className={classes.cardContent}>
-            <CardMedia
-              className={classes.media}
-              component="img"
-              height="150"
-              src={post.selectedFile}
-            ></CardMedia>
-            <Typography variant="h6"> {post.title}</Typography>
-            <Typography variant="subtitle1"> {post.content}</Typography>
-          </CardContent>
+          <Link to={`/something`}>
+            <CardContent className={classes.cardContent}>
+              <CardMedia
+                className={classes.media}
+                component="img"
+                height="150"
+                src={post.selectedFile}
+              ></CardMedia>
+              <Typography variant="h6"> {post.title}</Typography>
+              <Typography variant="subtitle1"> {post.content}</Typography>
+            </CardContent>
+          </Link>
         </CardActionArea>
         <div className={classes.views}>
           <Visibility />
