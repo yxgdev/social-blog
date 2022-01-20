@@ -89,6 +89,8 @@ const Form = () => {
             >
               <Grid className={classes.textField} item xs={12}>
                 <TextField
+                  required
+                  inputProps={{ maxlength: 15 }}
                   name="title"
                   onChange={handleChange}
                   fullWidth
@@ -98,6 +100,9 @@ const Form = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  label="Content"
+                  required
+                  inputProps={{ maxlength: 500 }}
                   name="content"
                   onChange={handleChange}
                   fullWidth

@@ -5,6 +5,7 @@ export default makeStyles(() => ({
     maxWidth: "300px",
     margin: "0px",
     position: "relative",
+    display: "flex",
   },
   media: {},
   gridItem: {
@@ -13,10 +14,12 @@ export default makeStyles(() => ({
     padding: "0px",
     marginBottom: "20px",
   },
-  actionArea: {},
+  actionArea: {
+    padding: "0px",
+  },
   cardContent: {
     padding: "0px",
-    height: "300px",
+    height: "400px",
   },
   button: {
     color: "white",
@@ -24,6 +27,15 @@ export default makeStyles(() => ({
     position: "absolute",
     right: "20px",
     bottom: "15px",
+  },
+  content: {
+    maxWidth: "200px",
+    wordWrap: "break-word",
+    textAlign: "left",
+  },
+  contentDiv: {
+    minHeight: "50px",
+    maxHeight: "100px",
   },
   views: {
     display: "flex",
@@ -34,6 +46,11 @@ export default makeStyles(() => ({
   },
   viewsWord: {
     marginLeft: "5px",
+    fontFamily: ["Poppins", "sans-serif"].join(","),
+  },
+  link: {
+    color: "black",
+    textDecoration: "none",
   },
 }));
 //

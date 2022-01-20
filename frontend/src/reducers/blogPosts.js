@@ -9,7 +9,7 @@ import {
 export default (posts = [], action) => {
   switch (action.type) {
     case GET_ALL:
-      return [...posts, ...action.payload];
+      return action.payload;
 
     case CREATE_POST:
       return [...posts, action.payload.post];

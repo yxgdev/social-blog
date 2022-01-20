@@ -26,9 +26,21 @@ const BlogPostSingleFull = () => {
   return (
     <Container className={classes.container}>
       <Paper className={classes.paper} elevation={3}>
-        <Typography variant="h3">{post.title}</Typography>
-        <Typography variant="h6">{post.author}</Typography>
-        <Typography variant="h6">{moment(post.createdAt).fromNow()}</Typography>
+        <Typography className={classes.title} variant="h3">
+          {post.title}
+        </Typography>
+        <Typography className={classes.author} variant="h6">
+          by {post.author}
+        </Typography>
+        <Typography className={classes.date} variant="subtitle1">
+          {moment(post.createdAt).fromNow()}
+        </Typography>
+        <img
+          className={classes.image}
+          src={post.selectedFile}
+          alt=""
+          srcset=""
+        />
         <Typography className={classes.paragraph} variant="body1">
           {post.content}
         </Typography>

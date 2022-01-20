@@ -33,7 +33,7 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
           onClick={() => handleActionArea(post._id)}
           className={classes.actionArea}
         >
-          <Link to={`/${post._id}`}>
+          <Link className={classes.link} to={`/post/${post._id}`}>
             <CardContent className={classes.cardContent}>
               <CardMedia
                 className={classes.media}
@@ -41,8 +41,18 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
                 height="150"
                 src={post.selectedFile}
               ></CardMedia>
-              <Typography variant="h6"> {post.title}</Typography>
-              <Typography variant="subtitle1"> {post.content}</Typography>
+              <div className={classes.contentDiv}>
+                <Typography variant="h6"> {post.title}</Typography>
+                <Typography
+                  paragraph
+                  className={classes.content}
+                  variant="body"
+                >
+                  {post.content.length > 180
+                    ? post.content.substring(0, 180) + " ..."
+                    : post.content}
+                </Typography>
+              </div>
             </CardContent>
           </Link>
         </CardActionArea>
