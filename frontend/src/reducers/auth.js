@@ -16,9 +16,12 @@ export default (state = { authData: null }, action) => {
     case SIGN_IN:
       localStorage.setItem(
         "profile",
-        JSON.stringify({ ...action?.payload?.data?.user })
+        JSON.stringify({ ...action?.payload?.data?.user, password: "" })
       );
-      return { ...state, authData: action?.payload?.data?.user };
+      return {
+        ...state,
+        authData: { ...action?.payload?.data?.user, password: "" },
+      };
     default:
       return state;
   }

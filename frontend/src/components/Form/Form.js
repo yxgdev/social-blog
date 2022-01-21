@@ -28,6 +28,7 @@ const initialState = {
 const Form = () => {
   const classes = useStyles();
   const [collapsed, setCollapsed] = useState(false);
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
@@ -35,7 +36,6 @@ const Form = () => {
   const handleCollapseButton = () => {
     setCollapsed(!collapsed);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,7 +43,7 @@ const Form = () => {
       title: state.title,
       content: state.content,
       selectedFile: state.selectedFile,
-      author: "somebody",
+      author: user.name,
       views: 0,
       createdAt: Date.now(),
     };
@@ -52,7 +52,7 @@ const Form = () => {
       title: "",
       content: "",
       selectedFile: "",
-      author: '"somebody"',
+      author: "somebody",
       views: 0,
       createdAt: Date.now(),
     });
