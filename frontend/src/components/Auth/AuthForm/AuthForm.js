@@ -27,10 +27,24 @@ const AuthForm = () => {
     // redirect
     navigate("/");
   };
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
   const onGoogleFailure = () => {};
 
   const handleIsSignUpClick = () =>
     SetIsSignUp((prevIsSignUp) => !prevIsSignUp);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+  };
+  const handleSubmit = () => {};
 
   const user = JSON.parse(localStorage.getItem("profile"));
   console.log(user);
@@ -50,6 +64,7 @@ const AuthForm = () => {
             {isSignUp && (
               <>
                 <TextField
+                  onChange={handleChange}
                   fullWidth
                   className={classes.textField}
                   name="firstName"
@@ -59,6 +74,7 @@ const AuthForm = () => {
                   label="First Name"
                 ></TextField>
                 <TextField
+                  onChange={handleChange}
                   fullWidth
                   name="lastName"
                   type="lastName"
@@ -70,6 +86,7 @@ const AuthForm = () => {
               </>
             )}
             <TextField
+              onChange={handleChange}
               fullWidth
               className={classes.textField}
               name="email"
@@ -79,6 +96,7 @@ const AuthForm = () => {
               label="Email"
             ></TextField>
             <TextField
+              onChange={handleChange}
               className={classes.textField}
               fullWidth
               name="password"
