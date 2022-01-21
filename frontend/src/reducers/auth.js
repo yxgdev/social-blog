@@ -1,14 +1,24 @@
-import { AUTH, SIGN_OUT } from "../constants/actionTypes";
+import { AUTH, SIGN_IN, SIGN_OUT } from "../constants/actionTypes";
 
 export default (state = { authData: null }, action) => {
   switch (action.type) {
     case AUTH:
-      localStorage.setItem("profile", JSON.stringify({ ...action?.payload }));
-      return { ...state, authData: action?.payload };
+      localStorage.setItem(
+        "profile",
+        JSON.stringify({ ...action?.payload?.result })
+      );
+      return { ...state, authData: action?.payload?.result };
 
     case SIGN_OUT:
       localStorage.clear();
       return { ...state, authData: null };
+
+    case SIGN_IN:
+      localStorage.setItem(
+        "profile",
+        JSON.stringify({ ...action?.payload?.data?.user })
+      );
+      return { ...state, authData: action?.payload?.data?.user };
     default:
       return state;
   }

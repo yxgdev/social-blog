@@ -5,15 +5,15 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { signIn, signUp } from "../../../actions";
 import { AUTH } from "../../../constants/actionTypes";
 import useStyles from "./styles";
 const AuthForm = () => {
-  console.log();
   const [isSignUp, SetIsSignUp] = useState(false);
   const classes = useStyles();
   const navigate = useNavigate();
@@ -42,12 +42,22 @@ const AuthForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignUp) {
+      dispatch(signUp(formData, navigate));
+    } else {
+      dispatch(signIn(formData, navigate));
+    }
+  };
 
   const user = JSON.parse(localStorage.getItem("profile"));
-  console.log(user);
+
+  useEffect(() => {
+    console.log("spam");
+    if (user) navigate("/");
+  }, []);
 
   return (
     !user && (
@@ -60,7 +70,12 @@ const AuthForm = () => {
           >
             {isSignUp ? "Sign Up" : "Sign In"}
           </Typography>
-          <form className={classes.form} action="">
+          <form
+            method="post"
+            onSubmit={handleSubmit}
+            className={classes.form}
+            action=""
+          >
             {isSignUp && (
               <>
                 <TextField
@@ -106,6 +121,7 @@ const AuthForm = () => {
               label="Password"
             ></TextField>
             <Button
+              type="submit"
               fullWidth
               className={classes.button}
               color="secondary"

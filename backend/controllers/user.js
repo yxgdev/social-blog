@@ -8,11 +8,17 @@ export const signIn = async (req, res) => {
   const currentUser = await User.findOne({ email });
   if (!currentUser) res.status(404).json({ message: "cant find user" });
 
-  const isPasswordCorrect = bcrypt.compare(password, currentUser.password);
+  const isPasswordCorrect = await bcrypt.compare(
+    password,
+    currentUser.password
+  );
 
   if (!isPasswordCorrect) res.status(400).json({ message: "failed sign in" });
 
-  const token = jwt.sign({ email: user.email, id: user._id }, "a secret");
+  const token = jwt.sign(
+    { email: currentUser.email, id: currentUser._id },
+    "a secret"
+  );
 
   res.status(200).json({ user: currentUser, token });
 };
@@ -33,7 +39,7 @@ export const signUp = async (req, res) => {
     lastName,
   });
 
-  const token = jwt.sign({ email: user.email, id, id: user._id });
+  const token = jwt.sign({ email: newUser.email, id: newUser._id });
 
   res.status(200).json({ user: newUser, token });
 };

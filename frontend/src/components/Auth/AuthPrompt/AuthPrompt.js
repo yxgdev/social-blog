@@ -9,20 +9,22 @@ const AuthPrompt = () => {
   const classes = useStyles();
 
   const user = useSelector((state) => state.auth); //helps in refreshing the page
+  console.log(user);
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch({ type: SIGN_OUT, payload: null });
   };
 
   const userLocal = JSON.parse(localStorage.getItem("profile"));
+  console.log(userLocal);
   return (
     <Container className={classes.container}>
-      {userLocal && userLocal.result ? (
+      {userLocal ? (
         <Paper className={classes.paperT} elevation={0}>
           <Grid className={classes.grid} container direction="row">
             <Grid item>
               <Typography variant="h5" className={classes.typography}>
-                Welcome back {`${userLocal.result.name}`}
+                Welcome back {`${userLocal.name}`}
               </Typography>
             </Grid>
             <Grid item>

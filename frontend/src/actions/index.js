@@ -4,6 +4,8 @@ import {
   DELETE_POST,
   GET_ALL,
   GET_SINGLE_POST,
+  SIGN_IN,
+  SIGN_UP,
   UPDATE_POST_VIEWS,
 } from "../constants/actionTypes";
 
@@ -36,4 +38,17 @@ export const getSinglePost = (id) => async (dispatch) => {
   const post = await api.getSinglePost(id);
 
   dispatch({ type: GET_SINGLE_POST, payload: post });
+};
+
+export const signIn = (formData, navigate) => async (dispatch) => {
+  const result = await api.signIn(formData);
+
+  dispatch({ type: SIGN_IN, payload: result });
+  navigate("/");
+};
+
+export const signUp = (formData, navigate) => async (dispatch) => {
+  const result = await api.signUp(formData);
+  dispatch({ type: SIGN_UP, payload: result });
+  navigate("/");
 };
