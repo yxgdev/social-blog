@@ -3,7 +3,7 @@ import axios from "axios";
 // const url = "";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://social-blog-yxg.herokuapp.com",
 });
 
 API.interceptors.request.use((req) => {

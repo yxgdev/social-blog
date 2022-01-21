@@ -2,7 +2,6 @@ import blogPost from "../models/blogMessage.js";
 
 export const getBlogPosts = async (req, res) => {
   const data = await blogPost.find();
-
   res.status(200).json(data);
 };
 

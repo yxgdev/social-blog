@@ -55,7 +55,6 @@ const AuthForm = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
-    console.log("spam");
     if (user) navigate("/");
   }, []);
 
