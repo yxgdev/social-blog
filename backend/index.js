@@ -7,6 +7,7 @@ dotenv.config();
 const app = express();
 
 import blogPostsRoutes from "./routes/blogPosts.js";
+import userRoutes from "./routes/user.js";
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -27,5 +28,5 @@ mongoose
   });
 
 app.use("/blog-posts", blogPostsRoutes);
-
+app.use("/auth", userRoutes);
 app.get("/", blogPostsRoutes);
