@@ -24,22 +24,33 @@ export const signIn = async (req, res) => {
 };
 
 export const signUp = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  try {
+    const { email, password, firstName, lastName } = req.body;
 
-  const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
-  if (existingUser) res.status(400).json({ message: "user already exist" });
+    if (existingUser) res.status(400).json({ message: "user already exist" });
 
-  const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
+    console.log("wtf", {
+      email,
+      password: hashedPassword,
+      name: `${firstName} ${lastName}`,
+    });
+    const newUser = await User.create({
+      email,
+      password: hashedPassword,
+      name: `${firstName} ${lastName}`,
+    });
+    console.log(newUser, "newUser");
 
-  const newUser = await User.create({
-    email,
-    password: hashedPassword,
-    firstName,
-    lastName,
-  });
+    const token = jwt.sign(
+      { email: newUser.email, id: newUser._id },
+      "a secret"
+    );
 
-  const token = jwt.sign({ email: newUser.email, id: newUser._id });
-
-  res.status(200).json({ user: newUser, token });
+    res.status(200).json({ user: newUser, token });
+  } catch (error) {
+    console.log(error);
+  }
 };

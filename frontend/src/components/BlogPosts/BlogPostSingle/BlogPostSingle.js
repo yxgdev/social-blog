@@ -25,6 +25,8 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
     dispatch(deletePost(id));
   };
 
+  const user = JSON.parse(localStorage.getItem("profile"));
+
   return (
     <Grid item className={classes.gridItem} xs={12} md={6} lg={4}>
       <Card className={classes.card}>
@@ -62,14 +64,16 @@ const BlogPostSingle = ({ post, handleActionArea }) => {
           </Typography>
         </div>
 
-        <Button
-          className={classes.button}
-          onClick={() => handleButtonClick(post._id)}
-          variant="contained"
-          color="secondary"
-        >
-          DELETE
-        </Button>
+        {(user?.googleId === post.creator || user?._id === post.creator) && (
+          <Button
+            className={classes.button}
+            onClick={() => handleButtonClick(post._id)}
+            variant="contained"
+            color="secondary"
+          >
+            DELETE
+          </Button>
+        )}
       </Card>
     </Grid>
   );

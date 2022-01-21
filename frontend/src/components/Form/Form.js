@@ -44,6 +44,7 @@ const Form = () => {
       content: state.content,
       selectedFile: state.selectedFile,
       author: user.name,
+      creator: user.googleId || user._id,
       views: 0,
       createdAt: Date.now(),
     };
@@ -53,6 +54,7 @@ const Form = () => {
       content: "",
       selectedFile: "",
       author: "somebody",
+      creator: "",
       views: 0,
       createdAt: Date.now(),
     });
@@ -66,82 +68,89 @@ const Form = () => {
   };
 
   return (
-    <Container className={classes.container} align="center">
-      <Paper className={classes.paper} elevation={10}>
-        <form onSubmit={handleSubmit} action="" className={classes.form}>
-          <Grid container direction="row" justifyContent="space-between">
-            <Grid item xs={6}>
-              <Typography
-                className={classes.typography}
-                variant="h6"
-                align="left"
-              >
-                Make a New Blog Post
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Button
-                color={collapsed ? "secondary" : "primary"}
-                onClick={handleCollapseButton}
-                variant="contained"
-              >
-                {collapsed ? "cancel" : "Create Post"}
-              </Button>
-            </Grid>
-          </Grid>
-          <Collapse in={collapsed}>
+    user && (
+      <Container className={classes.container} align="center">
+        <Paper className={classes.paper} elevation={10}>
+          <form onSubmit={handleSubmit} action="" className={classes.form}>
             <Grid
-              direction="row"
-              justifyContent="flex-start"
+              alignItems="center"
               container
-              className={classes.grid}
+              direction="row"
+              justifyContent="space-between"
             >
-              <Grid className={classes.textField} item xs={12}>
-                <TextField
-                  required
-                  inputProps={{ maxLength: 15 }}
-                  name="title"
-                  onChange={handleChange}
-                  fullWidth
-                  label="Title"
-                  value={state.title}
-                ></TextField>
+              <Grid item xs={6}>
+                <Typography
+                  className={classes.typography}
+                  variant="h6"
+                  align="left"
+                >
+                  Make a New Blog Post
+                </Typography>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Content"
-                  required
-                  inputProps={{ maxLength: 500 }}
-                  name="content"
-                  onChange={handleChange}
-                  fullWidth
-                  multiline
-                  minRows={4}
-                  label="Content"
-                  value={state.content}
-                ></TextField>
-
-                <Grid className={classes.fileBase} item xs={12}>
-                  <FileBase64
-                    name="selectedFile"
-                    type="file"
-                    multiple={false}
-                    onDone={({ base64 }) =>
-                      setState({ ...state, selectedFile: base64 })
-                    }
-                  ></FileBase64>
-                </Grid>
-                <Grid className={classes.buttonItem} item xs={12}>
-                  <Button type="submit" variant="contained" color="primary">
-                    Submit
-                  </Button>
-                </Grid>
+              <Grid item>
+                <Button
+                  color={collapsed ? "secondary" : "primary"}
+                  onClick={handleCollapseButton}
+                  variant="contained"
+                >
+                  {collapsed ? "cancel" : "Create Post"}
+                </Button>
               </Grid>
             </Grid>
-          </Collapse>
-        </form>
-      </Paper>
-    </Container>
+            <Collapse in={collapsed}>
+              <Grid
+                direction="row"
+                justifyContent="flex-start"
+                container
+                className={classes.grid}
+              >
+                <Grid className={classes.textField} item xs={12}>
+                  <TextField
+                    required
+                    inputProps={{ maxLength: 15 }}
+                    name="title"
+                    onChange={handleChange}
+                    fullWidth
+                    label="Title"
+                    value={state.title}
+                  ></TextField>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Content"
+                    required
+                    inputProps={{ maxLength: 500 }}
+                    name="content"
+                    onChange={handleChange}
+                    fullWidth
+                    multiline
+                    minRows={4}
+                    label="Content"
+                    value={state.content}
+                  ></TextField>
+
+                  <Grid className={classes.fileBase} item xs={12}>
+                    <FileBase64
+                      name="selectedFile"
+                      type="file"
+                      multiple={false}
+                      onDone={({ base64 }) =>
+                        setState({ ...state, selectedFile: base64 })
+                      }
+                    ></FileBase64>
+                  </Grid>
+                  <Grid className={classes.buttonItem} item xs={12}>
+                    <Button type="submit" variant="contained" color="primary">
+                      Submit
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Collapse>
+          </form>
+        </Paper>
+      </Container>
+    )
   );
 };
 

@@ -1,4 +1,4 @@
-import { AUTH, SIGN_IN, SIGN_OUT } from "../constants/actionTypes";
+import { AUTH, SIGN_IN, SIGN_OUT, SIGN_UP } from "../constants/actionTypes";
 
 export default (state = { authData: null }, action) => {
   switch (action.type) {
@@ -13,6 +13,7 @@ export default (state = { authData: null }, action) => {
       localStorage.clear();
       return { ...state, authData: null };
 
+    case SIGN_UP:
     case SIGN_IN:
       localStorage.setItem(
         "profile",

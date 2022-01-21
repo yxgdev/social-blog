@@ -1,6 +1,9 @@
 import { makeStyles } from "@material-ui/core";
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   container: {
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
     width: "50%",
     marginTop: "20px",
   },

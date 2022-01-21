@@ -6,6 +6,7 @@ export default makeStyles(() => ({
   },
   paper: {
     padding: "50px",
+    position: "relative",
   },
   paragraph: {
     marginTop: "20px",
@@ -24,5 +25,8 @@ export default makeStyles(() => ({
     minWidth: "200px",
     maxHeight: "20%",
     maxWidth: "50%",
+  },
+  button: {
+    marginTop: "5%",
   },
 }));

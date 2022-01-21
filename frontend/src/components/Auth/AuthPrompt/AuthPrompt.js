@@ -30,6 +30,7 @@ const AuthPrompt = () => {
             <Grid item>
               <Link className={classes.link} to="/auth">
                 <Button
+                  className={classes.button}
                   onClick={handleSignOut}
                   variant="contained"
                   color="secondary"
