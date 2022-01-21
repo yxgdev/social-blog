@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
 
     let decodedData;
     if (token && isOurLogin) {
-      decodedData = jwt.verify(token, "a secret");
+      decodedData = jwt.verify(token, process.env.SECRET_KEY);
 
       //   storing
       req.userId = decodedData?.id;

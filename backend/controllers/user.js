@@ -17,7 +17,7 @@ export const signIn = async (req, res) => {
 
   const token = jwt.sign(
     { email: currentUser.email, id: currentUser._id },
-    "a secret"
+    process.env.SECRET_KEY
   );
 
   res.status(200).json({ user: currentUser, token });
@@ -46,7 +46,7 @@ export const signUp = async (req, res) => {
 
     const token = jwt.sign(
       { email: newUser.email, id: newUser._id },
-      "a secret"
+      process.env.SECRET_KEY
     );
 
     res.status(200).json({ user: newUser, token });
